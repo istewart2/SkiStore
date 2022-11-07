@@ -1,4 +1,4 @@
-import { Container, CssBaseline, Typography } from '@mui/material';
+import { Container, CssBaseline } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Catalog from '../../features/catalog/Catalog';
 import { Product } from '../models/Product';

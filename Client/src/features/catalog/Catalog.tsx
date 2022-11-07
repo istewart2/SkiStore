@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  Button,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-} from '@mui/material';
+import { Button } from '@mui/material';
 import { Product } from '../../app/models/Product';
 import ProductList from './ProductList';
 
