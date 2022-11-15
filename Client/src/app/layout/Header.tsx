@@ -27,6 +27,18 @@ const rightLinks = [
   { title: 'register', path: '/register' },
 ];
 
+const navStyles = {
+  color: 'inherit',
+  textDecoration: 'none',
+  typography: 'h6',
+  '&:hover': {
+    color: 'grey.500',
+  },
+  '&.active': {
+    color: 'text.secondary',
+  },
+};
+
 export default function Header({ darkMode, handleThemeChange }: Props) {
   return (
     <AppBar position='static' sx={{ mb: 4 }}>
@@ -35,19 +47,16 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
           variant='h6'
           component={NavLink}
           to='/'
-          sx={{ color: 'inherit', textDecoration: 'none' }}
+          exact
+          sx={navStyles}
         >
           RE-STORE
         </Typography>
         <Switch checked={darkMode} onChange={handleThemeChange} />
+
         <List sx={{ display: 'flex' }}>
           {midLinks.map(({ title, path }) => (
-            <ListItem
-              component={NavLink}
-              to={path}
-              key={path}
-              sx={{ color: 'inherit', typography: 'h6' }}
-            >
+            <ListItem component={NavLink} to={path} key={path} sx={navStyles}>
               {title.toUpperCase()}
             </ListItem>
           ))}
@@ -57,14 +66,10 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
             <ShoppingCart />
           </Badge>
         </IconButton>
+
         <List sx={{ display: 'flex' }}>
           {rightLinks.map(({ title, path }) => (
-            <ListItem
-              component={NavLink}
-              to={path}
-              key={path}
-              sx={{ color: 'inherit', typography: 'h6' }}
-            >
+            <ListItem component={NavLink} to={path} key={path} sx={navStyles}>
               {title.toUpperCase()}
             </ListItem>
           ))}
