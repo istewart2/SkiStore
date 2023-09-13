@@ -32,13 +32,13 @@ if (builder.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
-
-app.UseRouting();
-
 app.UseCors(opt => {
     opt.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4444");
 });
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
 
 app.UseAuthorization();
 
