@@ -1,16 +1,15 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
-import { toast } from 'react-toastify';
-import { router } from '../router/Routes';
-import { resolve } from 'path';
+import axios, { AxiosError, AxiosResponse } from "axios";
+import { toast } from "react-toastify";
+import { router } from "../router/Routes";
 
 const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
 
-axios.defaults.baseURL = 'http://localhost:5000/api/';
+axios.defaults.baseURL = "http://localhost:5000/api/";
 
 const responseBody = (response: AxiosResponse) => response.data;
 
 axios.interceptors.response.use(
-  (async response) => {
+  async (response) => {
     await sleep();
     return response;
   },
@@ -33,7 +32,7 @@ axios.interceptors.response.use(
         toast.error(data.title);
         break;
       case 500:
-        router.navigate('server-error', { state: { error: data } });
+        router.navigate("server-error", { state: { error: data } });
         break;
       default:
         break;
@@ -50,16 +49,16 @@ const requests = {
 };
 
 const Catalog = {
-  list: () => requests.get('products'),
+  list: () => requests.get("products"),
   details: (id: number) => requests.get(`products/${id}`),
 };
 
 const TestErrors = {
-  get400Error: () => requests.get('error/bad-request'),
-  get401Error: () => requests.get('error/unauthorised'),
-  get404Error: () => requests.get('error/not-found'),
-  get500Error: () => requests.get('error/server-error'),
-  getValidationError: () => requests.get('error/validation-error'),
+  get400Error: () => requests.get("error/bad-request"),
+  get401Error: () => requests.get("error/unauthorised"),
+  get404Error: () => requests.get("error/not-found"),
+  get500Error: () => requests.get("error/server-error"),
+  getValidationError: () => requests.get("error/validation-error"),
 };
 
 const agent = {
