@@ -33,7 +33,7 @@ if (builder.Environment.IsDevelopment())
 }
 
 app.UseCors(opt => {
-    opt.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+    opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().AllowAnyOrigin();
 });
 
 app.UseHttpsRedirection();
